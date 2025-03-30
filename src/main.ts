@@ -1,5 +1,20 @@
 import * as idb from 'idb';
 
-export async function loadDB(): Promise<idb.IDBPDatabase<unknown>> {
-    return await idb.openDB('my-db');
+interface DB extends idb.DBSchema {
+    sample1: {
+        key: string;
+        value: string;
+    };
+    sample2: {
+        key: string;
+        value: number;
+    };
+};
+
+export async function loadDB(): Promise<void> {
+    const db = await idb.openDB<DB>('my-db');
+    
+    for (const v of db.objectStoreNames) {
+        await db.delete(v, "key");
+    }
 }
