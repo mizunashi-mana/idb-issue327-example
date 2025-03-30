@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "idb": "^8.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
